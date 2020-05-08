@@ -1,5 +1,6 @@
 const createError = require('http-errors');
 const express = require('express');
+const path = require('path')
 const logger = require('morgan');
 const dbConnection = require('./src/config/dbconnect')
 const jobs = require('./src/jobs/index')
@@ -13,13 +14,13 @@ app.use(express.urlencoded({ extended: false }));
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
+jobs.userjob()
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
 });
 
-jobs.userjob()
 
 // error handler
 app.use(function(err, req, res, next) {
