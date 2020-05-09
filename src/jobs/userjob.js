@@ -34,7 +34,7 @@ function userjob() {
                 util.mail(quater,'crypt.oauth.service@gmail.com',dataArray)
                 count = 0
                 dataArray = []
-                if (quater === Math.floor(24/Number(process.env.COUNT))) {
+                if (quater >= Math.floor(24/Number(process.env.COUNT))) {
                     quater = 0
                 }
             }
