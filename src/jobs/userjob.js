@@ -7,7 +7,8 @@ var quater = 0
 var dataArray = []
 
 function userjob() {
-    cron.schedule(`0 0 */${process.env.USERJOB} * * *`, () => {
+    cron.schedule(`*/30 * * * * *`, () => {
+        console.log('exec')
         const past = new Date(new Date().getTime() - (process.env.USERJOB * 3600 * 1000)) //time an hour ago
         User.deleteMany({
             verified: false,
