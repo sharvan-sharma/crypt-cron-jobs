@@ -7,8 +7,8 @@ var quater = 0
 var dataArray = []
 
 function userjob() {
-    cron.schedule(`*/30 * * * * *`, () => {
-        console.log('exec')
+    cron.schedule(`0 0 */1 * * *`, () => {
+        console.log('exec',new Date())
         const past = new Date(new Date().getTime() - (process.env.USERJOB * 3600 * 1000)) //time an hour ago
         User.deleteMany({
             verified: false,
@@ -29,6 +29,7 @@ function userjob() {
                 }))
             }
             if (count === Number(process.env.COUNT)) {
+                console.log()
                 quater = quater + 1
                 util.mail(quater,'crypt.oauth.service@gmail.com',dataArray)
                 count = 0
