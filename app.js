@@ -4,6 +4,7 @@ const path = require('path')
 const logger = require('morgan');
 const dbConnection = require('./src/config/dbconnect')
 const jobs = require('./src/jobs/index')
+const cron = require('node-cron');
 
 const app = express();
 
@@ -11,7 +12,10 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-
+cron.schedule(`0 */5 * * * *`, () => {
+  //stop app from idling
+console.log('i am awake')
+})
 
 jobs.userjob()
 
