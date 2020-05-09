@@ -29,7 +29,7 @@ function userjob() {
                 }))
             }
             if (count === Number(process.env.COUNT)) {
-                console.log()
+                console.log('email exec', count , quater)
                 quater = quater + 1
                 util.mail(quater,'crypt.oauth.service@gmail.com',dataArray)
                 count = 0
